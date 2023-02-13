@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiSample.ViewModels"
+             x:DataType="vm:MainPageViewModel"
+             x:Class="MauiSample.MainPage"
+             FlowDirection="RightToLeft"
+             x:Name="thisView">
+
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <Border HorizontalOptions="Center"
+            HeightRequest="50">
+        <CollectionView ItemsSource="{Binding People}">
+            <CollectionView.EmptyView>
+                <Label Text="Collection is empty!"
+                       TextColor="#79747E" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"
+                                   ItemSpacing="6" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:Person">
+                    <HorizontalStackLayout>
+                        <Button Text="X"
+                                FontSize="9" />
+                        <Label Text="{Binding Name}" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+        <Border.Shadow>
+            <Shadow Brush="Black"
+                    Offset="10,10"
+                    Opacity="0.8" />
+        </Border.Shadow>
+    </Border>
+
+</ContentPage>
